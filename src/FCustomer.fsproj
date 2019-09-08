@@ -6,12 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Rop\Result.fs" />
-    <Compile Include="Rop\DomainPrimitiveTypes.fs" />
-    <Compile Include="Rop\DomainModel.fs" />
-    <Compile Include="Rop\SqlDatabase.fs" />
-    <Compile Include="Rop\DataAccessLayer.fs" />
-    <Compile Include="Rop\DtoConverter.fs" />
+    <Compile Include="Result.fs" />
+    <Compile Include="Domain\DomainPrimitiveTypes.fs" />
+    <Compile Include="Domain\DomainModel.fs" />
+    <Compile Include="Domain\SqlDatabase.fs" />
+    <Compile Include="Domain\DataAccessLayer.fs" />
+    <Compile Include="Domain\DtoConverter.fs" />
     <Compile Include="Controllers\CustomerControllerHelper.fs" />
     <Compile Include="Controllers\CustomerController.fs" />
     <Compile Include="Startup.fs" />

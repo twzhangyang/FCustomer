@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Rop\Result.fs" />
+    <Compile Include="Rop\DomainPrimitiveTypes.fs" />
+    <Compile Include="Rop\DomainModel.fs" />
+    <Compile Include="Rop\SqlDatabase.fs" />
+    <Compile Include="Rop\DataAccessLayer.fs" />
+    <Compile Include="Rop\DtoConverter.fs" />
+    <Compile Include="Controllers\CustomerControllerHelper.fs" />
+    <Compile Include="Controllers\CustomerController.fs" />
+    <Compile Include="Startup.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+</Project>

@@ -5,11 +5,11 @@ open FCustomer.Result
 open FCustomer.SqlDatabase
 
 type ICustomerDao =
-    abstract GetAll : unit -> RopResult<Customer seq, DomainMessage>
+    abstract GetAll : unit -> Result<Customer seq, DomainMessage>
     
-    abstract GetById : CustomerId.T -> RopResult<Customer, DomainMessage>
+    abstract GetById : CustomerId.T -> Result<Customer, DomainMessage>
     
-    abstract Upsert : Customer -> RopResult<unit, DomainMessage>
+    abstract Upsert : Customer -> Result<unit, DomainMessage>
     
 let fomDbCustomer (dbCustomer: DbCustomer) =
     if dbCustomer = null then

@@ -1,6 +1,6 @@
 module FCustomer.Result 
 
-type RopResult<'TSuccess, 'TMessage> =
+type Result<'TSuccess, 'TMessage> =
     | Success of 'TSuccess * 'TMessage list
     | Failure of 'TMessage list
     

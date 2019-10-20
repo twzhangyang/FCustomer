@@ -26,21 +26,21 @@ let readFileAsStringAsync (filePath: string) =
 
 [<RequireQualifiedAccess>]
 module ShortGuid =
-let fromGuid (guid: Guid) =
-  guid.ToByteArray()
-  |> Convert.ToBase64String
-  |> fun str ->
-      str.Replace("/", "_")
-         .Replace("+", "-")
-         .Substring(0, 22)
+    let fromGuid (guid: Guid) =
+      guid.ToByteArray()
+      |> Convert.ToBase64String
+      |> fun str ->
+          str.Replace("/", "_")
+             .Replace("+", "-")
+             .Substring(0, 22)
 
 
-let toGuid (shortGuid: string) =
-    shortGuid.Replace("_", "/")
-             .Replace("-", "+")
-    |> (fun str -> str + "==")
-    |> Convert.FromBase64String
-    |> Guid
+    let toGuid (shortGuid: string) =
+        shortGuid.Replace("_", "/")
+                 .Replace("-", "+")
+        |> (fun str -> str + "==")
+        |> Convert.FromBase64String
+        |> Guid
 
 [<RequireQualifiedAccess>]
 module ShortId =

@@ -56,7 +56,7 @@ module Json =
             
             member __.SerializeToStreamAsync ( x : 'T) (stream : Stream) =
                 use sw = new StreamWriter(stream, Utf8EncodingWithoutBom, DefaultBufferSize, true)
-                use jw = JsonTextWriter(sw)
+                use jw = new JsonTextWriter(sw)
                 let sr = JsonSerializer.Create settings
                 sr.Serialize(jw, x)
                 Task.CompletedTask
@@ -69,8 +69,8 @@ module Json =
                 JsonConvert.DeserializeObject<'T>(json, settings)
                 
             member __.DeserializeAsync<'T> (stream : Stream) =
-                use sr = StreamReader(stream, true)
-                use jr = JsonTextReader(sr)
+                use sr = new StreamReader(stream, true)
+                use jr = new JsonTextReader(sr)
                 let sr = JsonSerializer.Create settings
                 
                 Task.FromResult(sr.Deserialize<'T> jr)

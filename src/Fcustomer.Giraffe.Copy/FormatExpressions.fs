@@ -42,7 +42,7 @@ let private formatStringMap =
         'd', ("(-?\d+)",                int64                >> box)  // int64
         'f', ("(-?\d+\.{1}\d+)",        float                >> box)  // float
         'O', (guidPattern,              parseGuid            >> box)  // Guid
-        'u', (shortIdPattern,           FCustomer.Giraffe.Copy.Common.ShortGuid.ShortId.toUInt64     >> box)  // uint64
+        'u', (shortIdPattern,           ShortId.toUInt64     >> box)  // uint64
     ]
 
 let private convertToRegexPatternAndFormatChars (formatString : string) =

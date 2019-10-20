@@ -6,6 +6,10 @@ open System
 open System.Threading.Tasks
 open Microsoft.Extensions.Logging
 open FSharp.Control.Tasks.V2.ContextInsensitive
+open Microsoft.AspNetCore.Builder
+open Microsoft.Extensions.DependencyInjection
+open Microsoft.Extensions.DependencyInjection.Extensions
+open FCustomer.Giraffe.Copy.Serialization
 
 type GiraffeMiddleware (next : RequestDelegate, handler : HttpHandler, loggerFactory : ILoggerFactory) =
     do
@@ -34,3 +38,36 @@ type GiraffeMiddleware (next : RequestDelegate, handler : HttpHandler, loggerFac
             if (result.IsNone) then 
                 return! next.Invoke ctx
         }
+
+type GiraffeErrorHandlerMiddleware ( next : RequestDelegate, errorHandler : ErrorHandler, loggerFactory : ILoggerFactory) =
+    do 
+        if isNull next then raise (ArgumentNullException("next"))    
+
+    member __.Invoke (ctx : HttpContext) =
+        task {
+            try return! next.Invoke ctx
+            with ex ->
+                let logger = loggerFactory.CreateLogger<GiraffeErrorHandlerMiddleware>()
+                try
+                    let func = (Some >> Task.FromResult)
+                    let! _ = errorHandler ex logger func ctx
+                    return () 
+                with ex2 ->
+                    logger.LogError(EventId(0), ex , "An unhandled exception has occurred while executing the request.") 
+                    logger.LogError(EventId(0), ex2, "An execption was thrown attempting to handle the original exception")
+        }
+
+type IApplicationBuilder with 
+    member this.UseGiraffe (handler : HttpHandler) =
+        this.UseMiddleware<GiraffeMiddleware> handler 
+        |> ignore
+        
+    member this.UseGiraffeErrorHandler (handler : ErrorHandler) =
+        this.UseMiddleware<GiraffeErrorHandlerMiddleware>(handler)
+
+type IServiceCollection with 
+    member this.AddGiraffe() =
+        this.TryAddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(NewtonsoftJsonSerializer.DefaultSettings))
+        this.TryAddSingleton<IXmlSerializer>(DefaultXmlSerializer(DefaultXmlSerializer.DefaultSettings))
+
+    

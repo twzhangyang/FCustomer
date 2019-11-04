@@ -13,10 +13,14 @@
         <Compile Include="ResponseCaching.fs" />
         <Compile Include="ModelBinding.fs" />
         <Compile Include="ModelValidation.fs" />
+        <Compile Include="Auth.fs" />
+        <Compile Include="Routing.fs" />
         <Compile Include="Middleware.fs" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.2.0" />
       <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions">
         <Version>2.2.0</Version>
       </PackageReference>

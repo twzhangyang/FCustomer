@@ -1,3 +1,4 @@
+[<AutoOpen>]
 module FCustomer.Giraffe.Copy.Core
 
 open System

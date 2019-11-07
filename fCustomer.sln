@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FCustomer.Giraffe.Copy", "src\Fcustomer.Giraffe.Copy\FCustomer.Giraffe.Copy.fsproj", "{95AF00DF-8DE4-47BF-B79B-5D378F2C4915}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FCustomer", "src\Api\FCustomer.fsproj", "{8231F523-AC9C-4996-A09F-0ADC8B3E813A}"
@@ -8,6 +8,8 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FCustomer.Tests", "tests\FCustomer.Tests\FCustomer.Tests.fsproj", "{58D63EE5-ECB4-447E-8A15-46F5BA71D3BB}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FCustomer.Console", "src\FCustomer.Console\FCustomer.Console.fsproj", "{1FDC41C0-A0CA-4339-945E-ED846D0754C0}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.SampleApp", "src\Giraffe.SampleApp\Giraffe.SampleApp.fsproj", "{3F326A02-9A8E-4665-8691-1763BEE10530}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{1FDC41C0-A0CA-4339-945E-ED846D0754C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FDC41C0-A0CA-4339-945E-ED846D0754C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FDC41C0-A0CA-4339-945E-ED846D0754C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F326A02-9A8E-4665-8691-1763BEE10530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F326A02-9A8E-4665-8691-1763BEE10530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F326A02-9A8E-4665-8691-1763BEE10530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F326A02-9A8E-4665-8691-1763BEE10530}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

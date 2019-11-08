@@ -11,6 +11,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FCustomer.Console", "src\FC
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.SampleApp", "src\Giraffe.SampleApp\Giraffe.SampleApp.fsproj", "{3F326A02-9A8E-4665-8691-1763BEE10530}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Railway.ErrorHandling", "Railway.ErrorHandling\Railway.ErrorHandling.fsproj", "{A57882D7-9F91-42DB-AE86-F72704C71210}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Railway.ErrorHandling.Tests", "Railway.ErrorHandling.Tests\Railway.ErrorHandling.Tests.fsproj", "{9C69447B-EF67-42A3-A9B9-52F149F2C0D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,14 @@ Global
 		{3F326A02-9A8E-4665-8691-1763BEE10530}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F326A02-9A8E-4665-8691-1763BEE10530}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F326A02-9A8E-4665-8691-1763BEE10530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A57882D7-9F91-42DB-AE86-F72704C71210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57882D7-9F91-42DB-AE86-F72704C71210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57882D7-9F91-42DB-AE86-F72704C71210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57882D7-9F91-42DB-AE86-F72704C71210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C69447B-EF67-42A3-A9B9-52F149F2C0D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C69447B-EF67-42A3-A9B9-52F149F2C0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C69447B-EF67-42A3-A9B9-52F149F2C0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C69447B-EF67-42A3-A9B9-52F149F2C0D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

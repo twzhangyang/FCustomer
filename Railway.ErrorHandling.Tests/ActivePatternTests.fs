@@ -18,7 +18,7 @@ module ActivePattern =
         match str with
         | Int value -> sprintf "int value %i" value
         | Bool value -> sprintf "bool value %b" value
-        | _ -> sprintf "unkown string %A" str
+        | _ -> sprintf "unknown string %A" str
 
 module Tests =
     

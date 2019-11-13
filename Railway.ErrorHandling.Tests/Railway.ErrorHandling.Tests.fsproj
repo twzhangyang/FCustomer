@@ -6,6 +6,7 @@
 
     <ItemGroup>
         <Compile Include="ActivePatternTests.fs" />
+        <Compile Include="ShoppingCard.fs" />
     </ItemGroup>
 
     <ItemGroup>

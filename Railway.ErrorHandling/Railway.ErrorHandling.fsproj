@@ -6,6 +6,9 @@
 
     <ItemGroup>
         <Compile Include="ErrorHandling.fs" />
+        <Compile Include="Result1.fs" />
+        <Compile Include="Functor.fs" />
+        <Compile Include="CardGame.fs" />
     </ItemGroup>
 
 </Project>

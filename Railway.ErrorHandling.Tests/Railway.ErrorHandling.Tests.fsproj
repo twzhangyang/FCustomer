@@ -7,6 +7,8 @@
     <ItemGroup>
         <Compile Include="ActivePatternTests.fs" />
         <Compile Include="ShoppingCard.fs" />
+        <Compile Include="SerializationTests.fs" />
+        <Compile Include="FunctionAsThings.fs" />
     </ItemGroup>
 
     <ItemGroup>

@@ -10,6 +10,7 @@
         <Compile Include="SerializationTests.fs" />
         <Compile Include="FunctionAsThings.fs" />
         <Compile Include="ValidateRequest.fs" />
+        <Compile Include="CustomerTests.fs" />
     </ItemGroup>
 
     <ItemGroup>

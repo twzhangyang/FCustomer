@@ -9,6 +9,7 @@
         <Compile Include="ShoppingCard.fs" />
         <Compile Include="SerializationTests.fs" />
         <Compile Include="FunctionAsThings.fs" />
+        <Compile Include="ValidateRequest.fs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,6 +19,10 @@
       <PackageReference Include="xunit.runner.visualstudio">
         <Version>2.4.1</Version>
       </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Railway.ErrorHandling\Railway.ErrorHandling.fsproj" />
     </ItemGroup>
 
 </Project>

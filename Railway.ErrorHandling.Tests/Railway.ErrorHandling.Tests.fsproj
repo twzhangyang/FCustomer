@@ -11,6 +11,7 @@
         <Compile Include="FunctionAsThings.fs" />
         <Compile Include="ValidateRequest.fs" />
         <Compile Include="CustomerTests.fs" />
+        <Compile Include="StackCalculator.fs" />
     </ItemGroup>
 
     <ItemGroup>

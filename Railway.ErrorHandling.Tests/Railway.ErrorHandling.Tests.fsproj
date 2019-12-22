@@ -16,6 +16,8 @@
         <Compile Include="Lenses.fs" />
         <Compile Include="FoldTests.fs" />
         <Compile Include="Guidelines.fs" />
+        <Compile Include="Builder.fs" />
+        <Compile Include="Continuations.fs" />
     </ItemGroup>
 
     <ItemGroup>

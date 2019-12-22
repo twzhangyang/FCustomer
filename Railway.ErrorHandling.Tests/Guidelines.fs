@@ -134,6 +134,42 @@ let myClass1 = MyClass1(2)
 let p = myClass1.Property1
 
 
+type MyClass2(x0, y0, z0) =
+    let mutable x = x0
+    let mutable y = y0
+    let mutable z = z0
+    do
+        printfn "Initialized object that has coordinates (%d, %d, %d)" x y z
+    
+    member this.X with get() = x and set(v) = x <- v
+    member this.Y with get() = y and set(v) = y <- v
+    member val Z = z with get, set
+    
+    new (x0) = MyClass2(x0, 2, 3)
+    
+    
+type Person(name: string, id: Guid) =
+    let mutable nameIn = name
+    let mutable IdIn = id
+    do
+        printfn "Initialized person with (%s, %A)" name id
+        
+    member val Name = nameIn with get, set
+    member this.Id with get() = IdIn and set(id) = IdIn <- id
+    new () =
+        Person("perter", Guid.NewGuid())
+        then
+            printfn "Initialized person with %s, %A" "perter", "hello"
+            
+            
+
+            
+    
+
+    
+    
+
+
     
 
     

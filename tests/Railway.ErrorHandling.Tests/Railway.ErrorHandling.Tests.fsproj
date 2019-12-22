@@ -33,7 +33,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Railway.ErrorHandling\Railway.ErrorHandling.fsproj" />
+      <ProjectReference Include="..\..\src\Railway.ErrorHandling\Railway.ErrorHandling.fsproj" />
     </ItemGroup>
 
 </Project>

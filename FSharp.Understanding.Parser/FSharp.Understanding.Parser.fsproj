@@ -8,6 +8,7 @@
         <Compile Include="ParserLibrary.fs" />
         <Compile Include="JsonParser.fs" />
         <Compile Include="Monads\Reader.fs" />
+        <Compile Include="Monads\State.fs" />
     </ItemGroup>
 
 </Project>

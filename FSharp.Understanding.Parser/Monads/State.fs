@@ -278,11 +278,11 @@ let createBody leftLeg rightLeg leftArm rightArm head beatingHeart =
     heart = beatingHeart 
     }
     
-let bodyM = 
-    M.returnM createBody 
-    <*> leftLegM
-    <*> rightLegM
-    <*> leftArmM
-    <*> rightArmM
-    <*> headM 
-    <*> beatingHeartM
+//let bodyM = 
+//    M.returnM createBody 
+////    <*> leftLegM
+////    <*> rightLegM
+//    <*> leftArmM
+//    <*> rightArmM
+//    <*> headM 
+//    <*> beatingHeartM

@@ -1,8 +1,5 @@
 module FSharp.Understanding.Parser.Exercise.Parser1
-open FSharp.Understanding.Parser.Monads
 open System
-open System
-open Xunit
 open Xunit
 
 let A_Parser str =
@@ -118,7 +115,6 @@ let orElse parser1 parser2 =
     Parser innerFn
 
 let ( <|> ) = orElse
-
 
 let choice listOfParsers =
     List.reduce ( <|> ) listOfParsers
@@ -262,8 +258,49 @@ let (>>.) p1 p2 =
     p1 .>>. p2
     |> mapP (fun (a, b) -> b)
     
-
+let between p1 p2 p3 =
+    p1 >>. p2 .>> p3
     
+let sepBy1 p sep =
+    let sepThenP = sep >>. p
+    p .>>. many sepThenP
+    |>> fun (p, pList) -> p::pList
+    
+let sepBy p sep =
+    sepBy1 p sep <|> returnP []
+  
+let bindP f p =
+    let innerFn input =
+        let result1 = run p input
+        match result1 with
+        | Failure err ->
+            Failure err
+        | Success (value1, remainingInput) ->
+            let p2 = f value1
+            run p2 remainingInput
+            
+    Parser innerFn
+    
+let ( >>= ) p f = bindP f p
+
+let mapP' f =
+    bindP ( f >> returnP )
+    
+let andThen' p1 p2 =
+    p1 >>= (fun p1Result ->
+        p2 >>= (fun p2Result ->
+            returnP (p1Result, p2Result)
+            ))
+    
+let applyP' fP xP =
+    fP >>= (fun f ->
+        xP >>= (fun x ->
+            returnP (f x)))
+    
+let many1' p =
+   p >>= (fun head ->
+       many p >>= (fun tail ->
+           returnP (head::tail))) 
 
 module Tests =
 
@@ -388,7 +425,7 @@ module Tests =
         Assert.Equal(Success(['1'; '2'; '3'], "BC"), result)
         
     [<Fact>]
-    let ``pint`` () =
+    let ``test pint`` () =
         let result = run pint "123BC"
         
         Assert.Equal(Success(123, "BC"), result)
@@ -418,3 +455,58 @@ module Tests =
         let result = run digitThenSemicolon "1:"
         
         Assert.Equal(Success('1', ""), result)
+        
+    [<Fact>]
+    let ``test AB followed by whitespace chars`` () =
+        let whitespaceChar = anyOf [ ' '; '\t'; '\n' ]
+        let whitespace = many1 whitespaceChar
+        
+        let ab = pstring "AB"
+        let cd = pstring "CD"
+        let ab_cd = (ab .>> whitespace) .>>.cd
+        
+        let result = run ab_cd "AB \t\nCD"
+        
+        Assert.Equal(Success(("AB", "CD"), ""), result)
+        
+        
+    [<Fact>]    
+    let ``test between`` () =
+        let pDoubleQuote = pCharFinal '"'
+        let quotedInteger = between pDoubleQuote pint pDoubleQuote
+        
+        let result = run quotedInteger "\"1234\""
+        
+        Assert.Equal(Success(1234, ""), result)
+       
+    [<Fact>]
+    let ``one or more digit list`` () =
+        let comma = pCharFinal ','
+        let digit = anyOf [ '0'..'9' ]
+        
+        let zeroOrMoreDigitList = sepBy digit comma
+        let oneOrMoreDigitList = sepBy1 digit comma
+        
+        let result0 = run zeroOrMoreDigitList "A"
+        let result1 = run oneOrMoreDigitList "1,2,3;"
+        
+        Assert.Equal(Success([],"A"), result0)
+        Assert.Equal(Success(['1';'2';'3'], ";"), result1)
+        
+        
+    [<Fact>]    
+    let ``cast int list`` () =
+        
+        let comma = pCharFinal ','
+        let digit = anyOf [ '0'..'9' ]
+        let oneOrMoreDigitList = sepBy1 digit comma
+
+        let charListToIntList (charList:char list) =
+            charList 
+            |> List.map (fun item -> Int32.Parse(string item))
+           
+        let list = oneOrMoreDigitList |>> charListToIntList 
+        let resultList = run list "1,2,3;"
+        let expected = Success([1;2;3], ";") 
+       
+        Assert.Equal(expected, resultList)

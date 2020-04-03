@@ -5,11 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="ParserLibrary.fs" />
-        <Compile Include="JsonParser.fs" />
         <Compile Include="Monads\Reader.fs" />
         <Compile Include="Monads\State.fs" />
         <Compile Include="Exercise\Parser1.fs" />
+        <Compile Include="Exercise\ParserLibrary.fs" />
+        <Compile Include="Exercise\JsonParser.fs" />
     </ItemGroup>
 
     <ItemGroup>
